@@ -16,6 +16,22 @@ export const metadata: Metadata = {
   title: "Mathew Peters | DevOps Engineer",
   description:
     "DevOps Engineer specializing in Azure, Terraform, Kubernetes, CI/CD, and cloud automation.",
+
+  openGraph: {
+    title: "Mathew Peters | DevOps Engineer",
+    description:
+      "DevOps Engineer portfolio showcasing Azure, Terraform, Kubernetes and automation projects.",
+    url: "https://devops-portfolio-coral.vercel.app/",
+    siteName: "Mathew Peters Portfolio",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Mathew Peters | DevOps Engineer",
+    description:
+      "DevOps Engineer specializing in cloud automation and infrastructure as code.",
+  },
 };
 
 export default function RootLayout({
