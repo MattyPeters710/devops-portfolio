@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Hero3D from "./components/Hero3D";
+import dynamic from "next/dynamic";
+
+const Hero3D = dynamic(() => import("./components/Hero3D"), {
+  ssr: false,
+});
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -16,9 +20,12 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative min-h-screen flex bg-black text-white overflow-hidden">
+    <main className="relative min-h-screen flex bg-black text-white">
 
-      <Hero3D />
+      {/* 3D BACKGROUND */}
+      <div className="absolute inset-0 -z-10">
+        <Hero3D />
+      </div>
 
       {/* MOBILE MENU BUTTON */}
       <button
@@ -43,7 +50,7 @@ export default function Home() {
           x: open ? 0 : -260,
         }}
         transition={{ type: "spring", stiffness: 200, damping: 25 }}
-        className="group fixed md:static top-0 left-0 h-full w-64 md:w-20 md:hover:w-64
+        className="group fixed md:relative top-0 left-0 h-full w-64 md:w-20 md:hover:w-64
         bg-white/5 backdrop-blur-xl border-r border-white/10
         flex flex-col pt-24 gap-6 px-4 z-40
         md:translate-x-0"
