@@ -3,8 +3,6 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 
-export const dynamic = "force-dynamic";
-
 const Hero3D = dynamic(() => import("./components/Hero3D"), {
   ssr: false,
 });
