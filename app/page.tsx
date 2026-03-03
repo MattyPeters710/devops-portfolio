@@ -1,10 +1,12 @@
 "use client";
 
+export const dynamic = "force-dynamic";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
+import dynamicImport from "next/dynamic";
 
-const Hero3D = dynamic(() => import("./components/Hero3D"), {
+const Hero3D = dynamicImport(() => import("./components/Hero3D"), {
   ssr: false,
 });
 
