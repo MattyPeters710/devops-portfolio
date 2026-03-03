@@ -1,13 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Hero3D from "./components/Hero3D";
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+    <main className="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden">
 
-      {/* Hero Section */}
-      <div className="max-w-4xl">
+      {/* 3D Background */}
+      <Hero3D />
+
+      {/* Hero Content */}
+      <div className="relative z-10 max-w-4xl">
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
@@ -47,7 +51,7 @@ export default function Home() {
       </div>
 
       {/* Tech Stack Section */}
-      <section className="py-20 px-6 grid md:grid-cols-3 gap-6 max-w-6xl w-full mt-20">
+      <section className="py-20 px-6 grid md:grid-cols-3 gap-6 max-w-6xl w-full mt-20 relative z-10">
 
         {["Azure", "Terraform", "Kubernetes"].map((tech, index) => (
           <motion.div
