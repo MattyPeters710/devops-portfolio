@@ -8,7 +8,12 @@ function FloatingShape({ position }: { position: [number, number, number] }) {
     <Float speed={2} rotationIntensity={2} floatIntensity={2}>
       <mesh position={position}>
         <icosahedronGeometry args={[1, 1]} />
-        <MeshDistortMaterial color="#22d3ee" distort={0.4} speed={2} />
+        <MeshDistortMaterial
+          color="#22d3ee"
+          distort={0.4}
+          speed={2}
+          roughness={0}
+        />
       </mesh>
     </Float>
   );
@@ -17,24 +22,29 @@ function FloatingShape({ position }: { position: [number, number, number] }) {
 export default function Hero3D() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 8] }}
+      camera={{ position: [0, 0, 8], fov: 60 }}
+      dpr={[1, 2]} 
       style={{
         position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
+        inset: 0,
         zIndex: -1,
       }}
     >
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[2, 2, 5]} />
+      {/* Lighting */}
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[2, 2, 5]} intensity={1} />
 
-      <FloatingShape position={[-2, 0, 0]} />
-      <FloatingShape position={[2, 0, 0]} />
+      {/* Floating Shapes */}
+      <FloatingShape position={[-3, 0, 0]} />
+      <FloatingShape position={[3, 0, 0]} />
       <FloatingShape position={[0, 2, -2]} />
 
-      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+      {/* Camera movement */}
+      <OrbitControls
+        enableZoom={false}
+        autoRotate
+        autoRotateSpeed={1}
+      />
     </Canvas>
   );
 }
