@@ -21,30 +21,23 @@ function FloatingShape({ position }: { position: [number, number, number] }) {
 
 export default function Hero3D() {
   return (
-    <Canvas
-      camera={{ position: [0, 0, 8], fov: 60 }}
-      dpr={[1, 2]} 
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: -1,
-      }}
-    >
-      {/* Lighting */}
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[2, 2, 5]} intensity={1} />
+    <div className="fixed inset-0 -z-10">
+      <Canvas
+        camera={{ position: [0, 0, 8], fov: 60 }}
+        dpr={[1, 2]}
+      >
+        {/* Lights */}
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[2, 2, 5]} intensity={1} />
 
-      {/* Floating Shapes */}
-      <FloatingShape position={[-3, 0, 0]} />
-      <FloatingShape position={[3, 0, 0]} />
-      <FloatingShape position={[0, 2, -2]} />
+        {/* Shapes */}
+        <FloatingShape position={[-3, 0, 0]} />
+        <FloatingShape position={[3, 0, 0]} />
+        <FloatingShape position={[0, 2, -2]} />
 
-      {/* Camera movement */}
-      <OrbitControls
-        enableZoom={false}
-        autoRotate
-        autoRotateSpeed={1}
-      />
-    </Canvas>
+        {/* Camera */}
+        <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
+      </Canvas>
+    </div>
   );
 }

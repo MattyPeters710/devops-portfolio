@@ -20,12 +20,10 @@ export default function Home() {
   ];
 
   return (
-    <main className="relative min-h-screen flex bg-black text-white overflow-hidden">
-      
+    <main className="relative min-h-screen flex bg-transparent text-white overflow-hidden">
+
       {/* 3D BACKGROUND */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Hero3D />
-      </div>
+      <Hero3D />
 
       {/* MOBILE MENU BUTTON */}
       <button
@@ -39,10 +37,11 @@ export default function Home() {
       <aside
         className={`
           group
-          fixed md:static top-0 left-0 h-full w-64 md:w-20 md:hover:w-64
+          fixed md:static top-0 left-0 h-full
+          w-64 md:w-20 md:hover:w-64
           bg-white/5 backdrop-blur-xl border-r border-white/10
-          flex flex-col pt-24 gap-6 px-4 z-40
-          transform transition-all duration-300
+          flex flex-col pt-24 gap-6 px-4
+          z-40 transform transition-all duration-300
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
@@ -52,7 +51,7 @@ export default function Home() {
             key={item.id}
             href={`#${item.id}`}
             onClick={() => setOpen(false)}
-            className="flex items-center gap-4 w-full px-3 py-3 rounded-lg hover:bg-white/10 transition-all duration-300"
+            className="flex items-center gap-4 w-full px-3 py-3 rounded-lg hover:bg-white/10 transition-all"
           >
             <span className="whitespace-nowrap opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
               {item.name}
@@ -62,7 +61,7 @@ export default function Home() {
       </aside>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 md:ml-20 px-6 py-20 relative z-20">
+      <div className="flex-1 md:ml-20 px-6 py-20 relative z-10">
 
         {/* HOME */}
         <section
