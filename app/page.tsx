@@ -23,14 +23,14 @@ export default function Home() {
     <main className="relative min-h-screen flex bg-black text-white overflow-hidden">
 
       {/* 3D BACKGROUND */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <Hero3D />
       </div>
 
       {/* MOBILE MENU BUTTON */}
       <button
-        className="md:hidden fixed top-5 left-5 z-50 bg-white/10 backdrop-blur-lg p-3 rounded-xl border border-white/20"
         onClick={() => setOpen(!open)}
+        className="md:hidden fixed top-5 left-5 z-50 bg-white/10 backdrop-blur-lg p-3 rounded-xl border border-white/20"
       >
         {open ? "✕" : "☰"}
       </button>
@@ -38,6 +38,7 @@ export default function Home() {
       {/* SIDEBAR */}
       <aside
         className={`
+          group
           fixed md:static top-0 left-0 h-full w-64 md:w-20 md:hover:w-64
           bg-white/5 backdrop-blur-xl border-r border-white/10
           flex flex-col pt-24 gap-6 px-4 z-40
@@ -51,10 +52,9 @@ export default function Home() {
             key={item.id}
             href={`#${item.id}`}
             onClick={() => setOpen(false)}
-            className="flex items-center gap-4 w-full px-3 py-3 rounded-lg
-            hover:bg-white/10 transition-all duration-300"
+            className="flex items-center gap-4 w-full px-3 py-3 rounded-lg hover:bg-white/10 transition-all duration-300"
           >
-            <span className="whitespace-nowrap opacity-100 md:opacity-0 md:group-hover:opacity-100">
+            <span className="whitespace-nowrap opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
               {item.name}
             </span>
           </a>
@@ -62,7 +62,7 @@ export default function Home() {
       </aside>
 
       {/* MAIN CONTENT */}
-      <div className="flex-1 md:ml-20 px-6 py-20 relative z-10">
+      <div className="flex-1 md:ml-20 px-6 py-20 relative z-20">
 
         {/* HOME */}
         <section
@@ -109,8 +109,7 @@ export default function Home() {
             ].map((project) => (
               <div
                 key={project}
-                className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10
-                hover:scale-105 transition duration-300"
+                className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 hover:scale-105 transition duration-300"
               >
                 <h3 className="text-xl font-semibold">{project}</h3>
                 <p className="text-gray-400 mt-3">
@@ -150,9 +149,7 @@ export default function Home() {
           <h2 className="text-3xl font-semibold mb-6">Contact</h2>
 
           <div className="bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-white/10">
-            <p className="text-gray-300">
-              📧 mathewpeters22@gmail.com
-            </p>
+            <p className="text-gray-300">📧 mathewpeters22@gmail.com</p>
             <p className="mt-3 text-gray-400">
               Open to freelance and DevOps opportunities.
             </p>
