@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen flex bg-black text-white overflow-hidden">
-
+      
       {/* 3D BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Hero3D />
